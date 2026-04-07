@@ -38,11 +38,33 @@ export default async function ProjectPage({
   const nextProject = getNextProject(slug);
   const prevProject = getPrevProject(slug);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    dateCreated: `${project.year}`,
+    creator: {
+      "@type": "Organization",
+      name: "The Unconfined Cinema",
+    },
+    locationCreated: {
+      "@type": "Place",
+      name: project.venue,
+    },
+  };
+
   return (
-    <ProjectDetail
-      project={project}
-      nextProject={nextProject}
-      prevProject={prevProject}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectDetail
+        project={project}
+        nextProject={nextProject}
+        prevProject={prevProject}
+      />
+    </>
   );
 }

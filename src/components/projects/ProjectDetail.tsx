@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
@@ -47,7 +48,16 @@ export function ProjectDetail({
           aria-hidden="true"
         />
 
-        {/* TODO: Replace with actual image from project */}
+        {project.heroImage && (
+          <Image
+            src={project.heroImage}
+            alt={project.title}
+            fill
+            priority
+            className="object-cover opacity-60"
+            sizes="100vw"
+          />
+        )}
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
           <motion.div variants={heroTitle} initial="hidden" animate="visible">
@@ -110,27 +120,43 @@ export function ProjectDetail({
             </div>
           </SectionReveal>
 
-          {/* Image gallery placeholder */}
-          <SectionReveal delay={0.3}>
-            <div className="mt-16">
-              <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
-                Gallery
-              </h3>
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <div
-                    key={n}
-                    className="aspect-[4/3] rounded-sm"
-                    style={{
-                      background: `linear-gradient(${project.gradientAngle + n * 15}deg, ${project.gradientFrom}, ${project.gradientTo})`,
-                    }}
-                  >
-                    {/* TODO: Replace with actual image from project */}
-                  </div>
-                ))}
+          {/* Image gallery */}
+          {project.images && project.images.length > 0 && (
+            <SectionReveal delay={0.3}>
+              <div className="mt-16">
+                <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
+                  Gallery
+                </h3>
+                <div className="grid grid-cols-6 gap-3 md:gap-4">
+                  {project.images.map((img, n) => {
+                    const spanClass =
+                      img.aspect === "wide" ? "col-span-6 md:col-span-4 aspect-[21/9]"
+                      : img.aspect === "portrait" ? "col-span-3 md:col-span-2 aspect-[3/4]"
+                      : img.aspect === "square" ? "col-span-3 md:col-span-2 aspect-square"
+                      : "col-span-6 md:col-span-3 aspect-[16/10]";
+
+                    return (
+                      <div
+                        key={n}
+                        className={`${spanClass} relative overflow-hidden rounded-sm`}
+                        style={{
+                          background: `linear-gradient(${project.gradientAngle + n * 15}deg, ${project.gradientFrom}, ${project.gradientTo})`,
+                        }}
+                      >
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          </SectionReveal>
+            </SectionReveal>
+          )}
         </div>
       </section>
 

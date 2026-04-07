@@ -1,3 +1,9 @@
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  aspect?: "landscape" | "portrait" | "square" | "wide";
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -13,6 +19,8 @@ export interface Project {
   gradientFrom: string;
   gradientTo: string;
   gradientAngle: number;
+  heroImage?: string;
+  images?: ProjectImage[];
 }
 
 export const projects: Project[] = [
@@ -36,6 +44,14 @@ export const projects: Project[] = [
     gradientFrom: "#1a1a2e",
     gradientTo: "#16213e",
     gradientAngle: 135,
+    heroImage: "/images/projects/the-unconfined-cinema-1/outdoor-cinema-dome.jpg",
+    images: [
+      { src: "/images/projects/the-unconfined-cinema-1/outdoor-cinema-dome.jpg", alt: "Outdoor cinema at Makati Stock Exchange dome with film projected on canopy", aspect: "wide" },
+      { src: "/images/projects/the-unconfined-cinema-1/triptych-title.jpg", alt: "Triptych projection showing The Unconfined Cinema title screens", aspect: "landscape" },
+      { src: "/images/projects/the-unconfined-cinema-1/triptych-screening.jpg", alt: "Triptych projection with film playing on three screens", aspect: "landscape" },
+      { src: "/images/projects/the-unconfined-cinema-1/outdoor-cinema.jpg", alt: "Outdoor cinema setup at Art Fair Philippines", aspect: "landscape" },
+      { src: "/images/projects/the-unconfined-cinema-1/gallery-installation.jpg", alt: "Gallery installation view", aspect: "landscape" },
+    ],
   },
   {
     slug: "love-team",
@@ -57,6 +73,10 @@ export const projects: Project[] = [
     gradientFrom: "#2d1b3d",
     gradientTo: "#1a1a2e",
     gradientAngle: 200,
+    heroImage: "/images/projects/love-team/ig-live-bea-jlc.png",
+    images: [
+      { src: "/images/projects/love-team/ig-live-bea-jlc.png", alt: "Instagram Live screenshot showing Bea Alonzo and John Lloyd Cruz", aspect: "portrait" },
+    ],
   },
   {
     slug: "revolutions-refrains-songs",
@@ -78,6 +98,13 @@ export const projects: Project[] = [
     gradientFrom: "#1a2e1a",
     gradientTo: "#0a1a0a",
     gradientAngle: 160,
+    heroImage: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg",
+    images: [
+      { src: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg", alt: "Orange wall with Revolutions, Refrains, Songs handwritten title", aspect: "landscape" },
+      { src: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Gallery screening room with film projection", aspect: "landscape" },
+      { src: "/images/projects/revolutions-refrains-songs/installation-still-1.jpg", alt: "Dark room with single screen showing film", aspect: "wide" },
+      { src: "/images/projects/revolutions-refrains-songs/installation-still-2.jpg", alt: "Pink gallery walls with poetry and text panels", aspect: "landscape" },
+    ],
   },
   {
     slug: "dreams-introspection-moving",

@@ -29,7 +29,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://unconfinedcinema.com"),
+  metadataBase: new URL("https://unconfinedcinema.art"),
   title: {
     default: "The Unconfined Cinema",
     template: "%s | The Unconfined Cinema",

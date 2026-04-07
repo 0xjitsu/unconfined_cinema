@@ -24,17 +24,20 @@ export function GET() {
       `- Format: ${p.format.join(", ")}`,
       `- Collaborators: ${p.collaborators.join(", ")}`,
       `- Description: ${p.description}`,
-      `- URL: https://unconfinedcinema.com/projects/${p.slug}`,
+      `- URL: https://unconfinedcinema.art/projects/${p.slug}`,
       "",
     ]),
     "## Contact",
-    "- Commission: https://unconfinedcinema.com/contact?type=commission",
-    "- Events: https://unconfinedcinema.com/contact?type=attend",
-    "- Collaborate: https://unconfinedcinema.com/contact?type=collaborate",
+    "- Commission: https://unconfinedcinema.art/contact?type=commission",
+    "- Events: https://unconfinedcinema.art/contact?type=attend",
+    "- Collaborate: https://unconfinedcinema.art/contact?type=collaborate",
     "",
   ];
 
   return new Response(sections.join("\n"), {
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+    },
   });
 }

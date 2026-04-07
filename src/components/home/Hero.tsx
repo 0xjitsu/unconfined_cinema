@@ -29,8 +29,27 @@ export function Hero() {
         aria-hidden="true"
       />
 
+      {/* Decorative side text */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1.5 }}
+        className="absolute left-6 top-1/2 -translate-y-1/2 -rotate-90 origin-left font-mono text-[10px] uppercase tracking-[0.5em] text-cinema-muted/20 hidden md:block"
+        aria-hidden="true"
+      >
+        Est. 2020 — Manila, Philippines
+      </motion.span>
+
       {/* Content */}
       <div className="relative z-10 px-6 text-center">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mb-8 h-px w-32 origin-center bg-cinema-gold/50 md:w-48"
+          aria-hidden="true"
+        />
+
         <motion.h1
           variants={heroTitle}
           initial="hidden"
@@ -41,9 +60,9 @@ export function Hero() {
             <motion.span
               key={word}
               variants={heroWord}
-              className="block text-cinema-warm"
+              className={`block text-cinema-warm ${i === 1 ? "italic tracking-[0.05em]" : ""}`}
               style={{
-                fontSize: "clamp(3rem, 12vw, 10rem)",
+                fontSize: i === 1 ? "clamp(3rem, 13vw, 11rem)" : "clamp(2.5rem, 10vw, 8rem)",
                 transform: `translateY(${i * -4}px)`,
               }}
             >
@@ -51,6 +70,14 @@ export function Hero() {
             </motion.span>
           ))}
         </motion.h1>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 1.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mt-6 h-px w-24 origin-center bg-cinema-gold/30 md:w-32"
+          aria-hidden="true"
+        />
 
         <motion.p
           variants={fadeIn}
@@ -63,12 +90,12 @@ export function Hero() {
         </motion.p>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — positioned left for asymmetry */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-12 md:translate-x-0"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
@@ -81,6 +108,17 @@ export function Hero() {
           <div className="h-8 w-px bg-gradient-to-b from-cinema-muted/40 to-transparent" />
         </motion.div>
       </motion.div>
+
+      {/* Year marker — bottom right */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1.5 }}
+        className="absolute bottom-8 right-6 font-mono text-[10px] uppercase tracking-[0.3em] text-cinema-muted/30 hidden md:block"
+        aria-hidden="true"
+      >
+        Since MMXX
+      </motion.span>
     </section>
   );
 }

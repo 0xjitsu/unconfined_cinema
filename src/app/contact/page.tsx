@@ -7,6 +7,27 @@ export const metadata: Metadata = {
     "Commission a project, attend an event, or join The Unconfined Cinema collective.",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "The Unconfined Cinema",
+  url: "https://unconfinedcinema.art",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "general",
+    url: "https://unconfinedcinema.art/contact",
+    availableLanguage: ["English", "Filipino"],
+  },
+};
+
 export default function ContactPage() {
-  return <ContactContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ContactContent />
+    </>
+  );
 }

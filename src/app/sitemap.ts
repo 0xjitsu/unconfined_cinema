@@ -3,7 +3,7 @@ import { projects } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const projectPages = projects.map((project) => ({
-    url: `https://unconfinedcinema.com/projects/${project.slug}`,
+    url: `https://unconfinedcinema.art/projects/${project.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
@@ -11,19 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: "https://unconfinedcinema.com",
+      url: "https://unconfinedcinema.art",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://unconfinedcinema.com/about",
+      url: "https://unconfinedcinema.art/about",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: "https://unconfinedcinema.com/contact",
+      url: "https://unconfinedcinema.art/contact",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,

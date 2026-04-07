@@ -45,6 +45,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | SEO Infrastructure | Sitemap, robots.txt, JSON-LD, dynamic OG images, dynamic favicon |
 | AI Agent Ready | `/llms.txt`, `/llms-full.txt`, `/.well-known/ai-plugin.json` |
 | Accessibility | Skip nav, focus rings, WCAG AA contrast, 44px touch targets, reduced-motion |
+| Contact Form Backend | Supabase-powered API route for commission/collaboration inquiries |
 | Responsive | Mobile-first, cinematic at every breakpoint |
 
 ## How It Works
@@ -72,7 +73,8 @@ src/
 │   ├── page.tsx            # Homepage
 │   ├── projects/[slug]/    # Project detail (SSG)
 │   ├── about/              # About the collective
-│   └── contact/            # Commission / collaborate form
+│   ├── contact/            # Commission / collaborate form
+│   └── api/contact/        # Supabase contact form API route
 ├── components/
 │   ├── layout/             # Navigation, Footer, GrainOverlay, SmoothScroll
 │   ├── home/               # Hero, Manifesto, ProjectsShowcase, etc.
@@ -126,6 +128,7 @@ Then update `src/lib/projects.ts` with image paths.
 | Animation | ![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=flat-square&logo=framer) |
 | Scroll | Lenis |
 | Hosting | ![Vercel](https://img.shields.io/badge/Vercel-black?style=flat-square&logo=vercel) |
+| Backend | ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white) |
 | Language | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) |
 
 ## License
@@ -136,7 +139,7 @@ Then update `src/lib/projects.ts` with image paths.
 
 This project is licensed under the **GNU Affero General Public License v3.0**.
 
-For commercial licensing inquiries, contact [hello@unconfinedcinema.com](mailto:hello@unconfinedcinema.com).
+For commercial licensing inquiries, contact [hello@unconfinedcinema.art](mailto:hello@unconfinedcinema.art).
 
 </div>
 

@@ -9,13 +9,17 @@ export function GET() {
       "Information about The Unconfined Cinema, a Filipino art collective. Access project details, collaborator information, and contact options.",
     api: {
       type: "openapi",
-      url: "https://unconfinedcinema.com/llms.txt",
+      url: "https://unconfinedcinema.art/llms.txt",
     },
-    llms_txt: "https://unconfinedcinema.com/llms.txt",
-    logo_url: "https://unconfinedcinema.com/icon.png",
-    contact_email: "hello@unconfinedcinema.com",
-    legal_info_url: "https://unconfinedcinema.com/about",
+    llms_txt: "https://unconfinedcinema.art/llms.txt",
+    logo_url: "https://unconfinedcinema.art/icon.png",
+    contact_email: "hello@unconfinedcinema.art",
+    legal_info_url: "https://unconfinedcinema.art/about",
   };
 
-  return Response.json(plugin);
+  return Response.json(plugin, {
+    headers: {
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+    },
+  });
 }

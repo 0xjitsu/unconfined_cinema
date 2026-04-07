@@ -24,7 +24,7 @@ const jsonLd = {
   name: "The Unconfined Cinema",
   description:
     "A Filipino art collective designing immersive, unconventional spaces to experience film.",
-  url: "https://unconfinedcinema.com",
+  url: "https://unconfinedcinema.art",
   publisher: {
     "@type": "Organization",
     name: "The Unconfined Cinema",

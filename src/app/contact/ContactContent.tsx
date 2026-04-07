@@ -94,12 +94,12 @@ export function ContactContent() {
                   hello@unconfinedcinema.com
                 </a>
                 <a
-                  href="https://instagram.com/theunconfinedcinema"
+                  href="https://www.instagram.com/unconfinedcinema/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block font-mono text-xs text-cinema-muted hover:text-cinema-gold transition-colors"
                 >
-                  @theunconfinedcinema
+                  @unconfinedcinema
                 </a>
               </div>
             </SectionReveal>

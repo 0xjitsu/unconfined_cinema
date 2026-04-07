@@ -47,7 +47,7 @@ export function Footer() {
             </span>
             <div className="flex flex-col gap-2">
               <a
-                href="https://instagram.com/theunconfinedcinema"
+                href="https://www.instagram.com/unconfinedcinema/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-xs text-cinema-muted hover:text-cinema-gold transition-colors min-h-[44px] flex items-center"

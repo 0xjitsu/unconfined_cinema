@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -8,17 +9,69 @@ import { SectionReveal } from "@/components/ui/SectionReveal";
 import { CinematicGallery } from "@/components/ui/CinematicGallery";
 import { fadeIn, heroTitle, heroWord } from "@/lib/animations";
 
+const noiseOverlay =
+  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+
 interface ProjectDetailProps {
   project: Project;
+  projectIndex: number;
   nextProject?: Project;
   prevProject?: Project;
 }
 
+/* ═══════════════════════════════════════════════
+   HERO VIDEO — autoplay with IntersectionObserver
+   ═══════════════════════════════════════════════ */
+
+function HeroVideo({ src, poster }: { src: string; poster?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="absolute inset-0">
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="h-full w-full object-cover opacity-50"
+        aria-hidden="true"
+      />
+    </div>
+  );
+}
+
 export function ProjectDetail({
   project,
+  projectIndex,
   nextProject,
   prevProject,
 }: ProjectDetailProps) {
+  const projectNum = projectIndex >= 0 ? String(projectIndex + 1).padStart(2, "0") : null;
+
   return (
     <article>
       {/* Hero */}
@@ -31,13 +84,10 @@ export function ProjectDetail({
           }}
           aria-hidden="true"
         />
+        {/* Film grain */}
         <div
           className="absolute inset-0 opacity-20 mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-            backgroundSize: "256px 256px",
-          }}
+          style={{ backgroundImage: noiseOverlay, backgroundSize: "256px 256px" }}
           aria-hidden="true"
         />
         {/* Gradient fade to black at bottom */}
@@ -49,16 +99,9 @@ export function ProjectDetail({
           aria-hidden="true"
         />
 
+        {/* Hero media — video uses IntersectionObserver autoplay */}
         {project.heroVideo ? (
-          <video
-            src={project.heroVideo}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover opacity-50"
-            aria-hidden="true"
-          />
+          <HeroVideo src={project.heroVideo} poster={project.heroImage} />
         ) : project.heroImage ? (
           <Image
             src={project.heroImage}
@@ -70,20 +113,46 @@ export function ProjectDetail({
           />
         ) : null}
 
+        {/* Project number — large watermark in hero */}
+        {projectNum && (
+          <motion.div
+            className="absolute right-6 top-24 z-[1] md:right-12 md:top-32"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          >
+            <span className="font-display text-[6rem] font-light leading-none text-cinema-gold/15 md:text-[12rem]">
+              {projectNum}
+            </span>
+          </motion.div>
+        )}
+
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
           <motion.div variants={heroTitle} initial="hidden" animate="visible">
-            <motion.span
-              variants={heroWord}
-              className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold"
-            >
-              {project.year} · {project.venue}
-            </motion.span>
+            {/* Number badge + metadata */}
+            <motion.div variants={heroWord} className="mb-4 flex items-center gap-3">
+              {projectNum && (
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-cinema-gold/30 font-mono text-xs text-cinema-gold md:h-10 md:w-10 md:text-sm">
+                  {projectNum}
+                </span>
+              )}
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
+                {project.year} · {project.venue}
+              </span>
+            </motion.div>
             <motion.h1
               variants={heroWord}
-              className="max-w-4xl font-display text-5xl font-light leading-[0.9] tracking-tight text-cinema-warm md:text-7xl"
+              className="max-w-4xl font-display text-4xl font-light leading-[0.9] tracking-tight text-cinema-warm md:text-7xl"
             >
               {project.title}
             </motion.h1>
+            {/* Medium tag below title */}
+            <motion.p
+              variants={heroWord}
+              className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-cinema-warm/50 md:text-base"
+            >
+              {project.medium}
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -131,7 +200,7 @@ export function ProjectDetail({
             </div>
           </SectionReveal>
 
-          {/* Cinematic gallery — collage layout with video */}
+          {/* Cinematic gallery */}
           <CinematicGallery project={project} />
         </div>
       </section>

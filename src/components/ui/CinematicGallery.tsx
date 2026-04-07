@@ -260,7 +260,7 @@ export function CinematicGallery({ project }: CinematicGalleryProps) {
       </h3>
 
       {/* Desktop: asymmetric collage layout */}
-      <div className="hidden md:block">
+      <div className="hidden overflow-hidden md:block">
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           {media.map((item, i) => {
             const slot = template[i % template.length];
@@ -273,8 +273,8 @@ export function CinematicGallery({ project }: CinematicGalleryProps) {
         </div>
       </div>
 
-      {/* Mobile: staggered scroll-reveal stack */}
-      <div className="space-y-6 md:hidden">
+      {/* Mobile: clean scroll-reveal stack — no offsets to prevent overflow */}
+      <div className="space-y-6 overflow-hidden md:hidden">
         {media.map((item, i) => {
           const mobileSlot: CollageSlot = {
             gridArea: "",
@@ -286,11 +286,10 @@ export function CinematicGallery({ project }: CinematicGalleryProps) {
                   ? "aspect-square"
                   : "aspect-[4/3]",
             z: 1,
-            parallax: 0.3,
+            parallax: 0.15,
             reveal: i % 3 === 0 ? "clipUp" : i % 3 === 1 ? "slideLeft" : "fadeScale",
             delay: i * 0.08,
-            rotate: i % 2 === 0 ? -0.5 : 0.5,
-            offsetX: i % 2 === 0 ? "-3%" : "3%",
+            rotate: 0,
           };
           return (
             <CollageItem key={i} item={item} slot={mobileSlot} project={project} index={i} />

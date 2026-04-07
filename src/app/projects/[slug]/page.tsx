@@ -37,6 +37,7 @@ export default async function ProjectPage({
 
   const nextProject = getNextProject(slug);
   const prevProject = getPrevProject(slug);
+  const projectIndex = projects.filter((p) => !p.isUpcoming).findIndex((p) => p.slug === slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -62,6 +63,7 @@ export default async function ProjectPage({
       />
       <ProjectDetail
         project={project}
+        projectIndex={projectIndex}
         nextProject={nextProject}
         prevProject={prevProject}
       />

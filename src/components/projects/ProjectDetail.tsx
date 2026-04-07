@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 import { SectionReveal } from "@/components/ui/SectionReveal";
+import { CinematicGallery } from "@/components/ui/CinematicGallery";
 import { fadeIn, heroTitle, heroWord } from "@/lib/animations";
 
 interface ProjectDetailProps {
@@ -48,7 +49,17 @@ export function ProjectDetail({
           aria-hidden="true"
         />
 
-        {project.heroImage && (
+        {project.heroVideo ? (
+          <video
+            src={project.heroVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover opacity-50"
+            aria-hidden="true"
+          />
+        ) : project.heroImage ? (
           <Image
             src={project.heroImage}
             alt={project.title}
@@ -57,7 +68,7 @@ export function ProjectDetail({
             className="object-cover opacity-60"
             sizes="100vw"
           />
-        )}
+        ) : null}
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
           <motion.div variants={heroTitle} initial="hidden" animate="visible">
@@ -120,43 +131,8 @@ export function ProjectDetail({
             </div>
           </SectionReveal>
 
-          {/* Image gallery */}
-          {project.images && project.images.length > 0 && (
-            <SectionReveal delay={0.3} variant="clipUp">
-              <div className="mt-16">
-                <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
-                  Gallery
-                </h3>
-                <div className="grid grid-cols-6 gap-3 md:gap-4">
-                  {project.images.map((img, n) => {
-                    const spanClass =
-                      img.aspect === "wide" ? "col-span-6 md:col-span-4 aspect-[21/9]"
-                      : img.aspect === "portrait" ? "col-span-3 md:col-span-2 aspect-[3/4]"
-                      : img.aspect === "square" ? "col-span-3 md:col-span-2 aspect-square"
-                      : "col-span-6 md:col-span-3 aspect-[16/10]";
-
-                    return (
-                      <div
-                        key={n}
-                        className={`${spanClass} relative overflow-hidden rounded-sm`}
-                        style={{
-                          background: `linear-gradient(${project.gradientAngle + n * 15}deg, ${project.gradientFrom}, ${project.gradientTo})`,
-                        }}
-                      >
-                        <Image
-                          src={img.src}
-                          alt={img.alt}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </SectionReveal>
-          )}
+          {/* Cinematic gallery — collage layout with video */}
+          <CinematicGallery project={project} />
         </div>
       </section>
 

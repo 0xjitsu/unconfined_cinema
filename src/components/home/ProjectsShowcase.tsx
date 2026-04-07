@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -22,11 +22,32 @@ const revealSequence: RevealVariant[] = ["clipUp", "slideRight", "fadeUp"];
 
 function ParallaxImage({ project, layout }: { project: Project; layout: typeof layouts[0] }) {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
+  const hasVideo = project.heroVideo || (project.videos && project.videos.length > 0);
+  const videoSrc = project.heroVideo ?? project.videos?.[0]?.src;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isHovered) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isHovered]);
+
   return (
-    <div ref={ref} className={`relative ${layout.offset}`}>
+    <div
+      ref={ref}
+      className={`relative ${layout.offset}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
         className={`relative ${layout.aspect} w-full overflow-hidden`}
         style={{
@@ -39,8 +60,19 @@ function ParallaxImage({ project, layout }: { project: Project; layout: typeof l
               src={project.heroImage}
               alt={project.subtitle ?? project.title}
               fill
-              className="object-cover w-full h-full"
+              className={`object-cover w-full h-full transition-opacity duration-700 ${isHovered && hasVideo ? "opacity-0" : "opacity-100"}`}
               sizes="(max-width: 768px) 100vw, 85vw"
+            />
+          )}
+          {hasVideo && videoSrc && (
+            <video
+              ref={videoRef}
+              src={videoSrc}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${isHovered ? "opacity-100" : "opacity-0"}`}
             />
           )}
         </motion.div>
@@ -50,15 +82,25 @@ function ParallaxImage({ project, layout }: { project: Project; layout: typeof l
           aria-hidden="true"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-cinema-black/0 transition-colors duration-500 group-hover:bg-cinema-black/40">
-          <span
-            className="font-mono text-xs uppercase tracking-[0.3em] text-cinema-warm transition-all duration-500"
-            style={{ clipPath: "inset(0 100% 0 0)" }}
-          >
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-cinema-warm transition-all duration-500">
             <span className="group-hover:[clip-path:inset(0_0_0_0)] [clip-path:inset(0_100%_0_0)] transition-[clip-path] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] inline-block">
-              View Project →
+              {isHovered && hasVideo ? "▶ Watch Project" : "View Project →"}
             </span>
           </span>
         </div>
+
+        {/* Video indicator badge */}
+        {hasVideo && (
+          <div className={`absolute top-4 right-4 flex items-center gap-2 rounded-full px-3 py-1.5 backdrop-blur-sm transition-all duration-500 ${isHovered ? "bg-cinema-gold/20 border border-cinema-gold/40" : "bg-cinema-black/40 border border-cinema-warm/10"}`}>
+            <span className="relative flex h-1.5 w-1.5">
+              <span className={`absolute inline-flex h-full w-full rounded-full bg-cinema-gold ${isHovered ? "animate-ping" : ""}`} />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cinema-gold" />
+            </span>
+            <span className="font-mono text-[9px] uppercase tracking-wider text-cinema-warm/70">
+              Film
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -4,6 +4,17 @@ export interface ProjectImage {
   aspect?: "landscape" | "portrait" | "square" | "wide";
 }
 
+export interface ProjectVideo {
+  src: string;
+  poster?: string;
+  alt: string;
+  aspect?: "landscape" | "portrait" | "square" | "wide";
+}
+
+export type MediaItem =
+  | ({ type: "image" } & ProjectImage)
+  | ({ type: "video" } & ProjectVideo);
+
 export interface Project {
   slug: string;
   title: string;
@@ -20,7 +31,10 @@ export interface Project {
   gradientTo: string;
   gradientAngle: number;
   heroImage?: string;
+  heroVideo?: string;
   images?: ProjectImage[];
+  videos?: ProjectVideo[];
+  media?: MediaItem[];
 }
 
 export const projects: Project[] = [
@@ -45,12 +59,24 @@ export const projects: Project[] = [
     gradientTo: "#16213e",
     gradientAngle: 135,
     heroImage: "/images/projects/the-unconfined-cinema-1/outdoor-cinema-dome.jpg",
+    heroVideo: "/images/projects/the-unconfined-cinema-1/opening-night.mp4",
     images: [
       { src: "/images/projects/the-unconfined-cinema-1/outdoor-cinema-dome.jpg", alt: "Outdoor cinema at Makati Stock Exchange dome with film projected on canopy", aspect: "wide" },
       { src: "/images/projects/the-unconfined-cinema-1/triptych-title.jpg", alt: "Triptych projection showing The Unconfined Cinema title screens", aspect: "landscape" },
       { src: "/images/projects/the-unconfined-cinema-1/triptych-screening.jpg", alt: "Triptych projection with film playing on three screens", aspect: "landscape" },
       { src: "/images/projects/the-unconfined-cinema-1/outdoor-cinema.jpg", alt: "Outdoor cinema setup at Art Fair Philippines", aspect: "landscape" },
       { src: "/images/projects/the-unconfined-cinema-1/gallery-installation.jpg", alt: "Gallery installation view", aspect: "landscape" },
+    ],
+    videos: [
+      { src: "/images/projects/the-unconfined-cinema-1/opening-night.mp4", poster: "/images/projects/the-unconfined-cinema-1/outdoor-cinema-dome.jpg", alt: "Opening night footage of the outdoor cinema", aspect: "wide" },
+    ],
+    media: [
+      { type: "image", src: "/images/projects/the-unconfined-cinema-1/outdoor-cinema-dome.jpg", alt: "Outdoor cinema at Makati Stock Exchange dome with film projected on canopy", aspect: "wide" },
+      { type: "video", src: "/images/projects/the-unconfined-cinema-1/opening-night.mp4", poster: "/images/projects/the-unconfined-cinema-1/outdoor-cinema-dome.jpg", alt: "Opening night footage of the outdoor cinema", aspect: "landscape" },
+      { type: "image", src: "/images/projects/the-unconfined-cinema-1/triptych-title.jpg", alt: "Triptych projection showing The Unconfined Cinema title screens", aspect: "portrait" },
+      { type: "image", src: "/images/projects/the-unconfined-cinema-1/triptych-screening.jpg", alt: "Triptych projection with film playing on three screens", aspect: "landscape" },
+      { type: "image", src: "/images/projects/the-unconfined-cinema-1/outdoor-cinema.jpg", alt: "Outdoor cinema setup at Art Fair Philippines", aspect: "square" },
+      { type: "image", src: "/images/projects/the-unconfined-cinema-1/gallery-installation.jpg", alt: "Gallery installation view", aspect: "landscape" },
     ],
   },
   {
@@ -76,6 +102,9 @@ export const projects: Project[] = [
     heroImage: "/images/projects/love-team/ig-live-bea-jlc.png",
     images: [
       { src: "/images/projects/love-team/ig-live-bea-jlc.png", alt: "Instagram Live screenshot showing Bea Alonzo and John Lloyd Cruz", aspect: "portrait" },
+    ],
+    media: [
+      { type: "image", src: "/images/projects/love-team/ig-live-bea-jlc.png", alt: "Instagram Live screenshot showing Bea Alonzo and John Lloyd Cruz", aspect: "portrait" },
     ],
   },
   {
@@ -104,6 +133,18 @@ export const projects: Project[] = [
       { src: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Gallery screening room with film projection", aspect: "landscape" },
       { src: "/images/projects/revolutions-refrains-songs/installation-still-1.jpg", alt: "Dark room with single screen showing film", aspect: "wide" },
       { src: "/images/projects/revolutions-refrains-songs/installation-still-2.jpg", alt: "Pink gallery walls with poetry and text panels", aspect: "landscape" },
+    ],
+    videos: [
+      { src: "/images/projects/revolutions-refrains-songs/installation-video-1.mp4", poster: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Multi-screen film installation playing in gallery", aspect: "landscape" },
+      { src: "/images/projects/revolutions-refrains-songs/installation-video-2.mp4", poster: "/images/projects/revolutions-refrains-songs/installation-still-1.jpg", alt: "Film projection in dark gallery room", aspect: "wide" },
+    ],
+    media: [
+      { type: "image", src: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg", alt: "Orange wall with Revolutions, Refrains, Songs handwritten title", aspect: "landscape" },
+      { type: "video", src: "/images/projects/revolutions-refrains-songs/installation-video-1.mp4", poster: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Multi-screen film installation playing in gallery", aspect: "landscape" },
+      { type: "image", src: "/images/projects/revolutions-refrains-songs/installation-still-2.jpg", alt: "Pink gallery walls with poetry and text panels", aspect: "portrait" },
+      { type: "video", src: "/images/projects/revolutions-refrains-songs/installation-video-2.mp4", poster: "/images/projects/revolutions-refrains-songs/installation-still-1.jpg", alt: "Film projection in dark gallery room", aspect: "wide" },
+      { type: "image", src: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Gallery screening room with film projection", aspect: "square" },
+      { type: "image", src: "/images/projects/revolutions-refrains-songs/installation-still-1.jpg", alt: "Dark room with single screen showing film", aspect: "landscape" },
     ],
   },
   {

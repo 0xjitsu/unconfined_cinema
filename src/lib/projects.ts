@@ -149,19 +149,27 @@ export const projects: Project[] = [
   },
   {
     slug: "dreams-introspection-moving",
-    title: "Dreams. Introspection. Moving.",
+    title: "The Unconfined Cinema #4: Dreams. Introspection. Moving.",
+    subtitle: "Dreams. Introspection. Moving.",
     year: 2026,
-    venue: "Manila",
+    venue: "ArtInformal, San Juan",
     medium: "Film workshop",
     format: ["Workshop", "Screening"],
     shortDescription: "A film workshop with Lav Diaz and Silke Lapina",
     description:
       "A two-day film workshop exploring the boundaries of slow cinema and collective dreaming. Led by legendary slow-cinema director Lav Diaz and artist Silke Lapina. Participants engaged in intensive exercises blending introspection, movement, and the moving image. March 14–15, 2026.",
     collaborators: ["Lav Diaz", "Silke Lapina"],
-    isUpcoming: true,
+    isUpcoming: false,
     gradientFrom: "#2e1a1a",
     gradientTo: "#1a0a0a",
     gradientAngle: 180,
+    heroImage: "/images/projects/dreams-introspection-moving/workshop-wall.jpg",
+    images: [
+      { src: "/images/projects/dreams-introspection-moving/workshop-wall.jpg", alt: "Dreams. Introspection. Moving. title wall at ArtInformal gallery", aspect: "landscape" },
+    ],
+    media: [
+      { type: "image", src: "/images/projects/dreams-introspection-moving/workshop-wall.jpg", alt: "Dreams. Introspection. Moving. title wall at ArtInformal gallery", aspect: "landscape" },
+    ],
   },
 ];
 

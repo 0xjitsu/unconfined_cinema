@@ -298,3 +298,9 @@ html.theme-transition *::after {
 .scroll-progress {
   transform-origin: left;
 }
+
+/* Rendering perf — skip layout/paint for off-screen sections */
+.contain-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

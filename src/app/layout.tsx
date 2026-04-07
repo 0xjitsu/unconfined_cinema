@@ -43,6 +43,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "The Unconfined Cinema",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Unconfined Cinema",
+    description:
+      "A Filipino art collective where cinema escapes the screen. Immersive installations, experimental screenings, and collaborative workshops.",
+  },
 };
 
 export const viewport: Viewport = {

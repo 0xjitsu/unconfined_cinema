@@ -1,7 +1,10 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useSpring } from "framer-motion";
+
+const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -21,7 +24,6 @@ export function MagneticButton({
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
   const x = useSpring(0, springConfig);
   const y = useSpring(0, springConfig);
 
@@ -48,7 +50,7 @@ export function MagneticButton({
       ? "bg-cinema-gold text-cinema-black hover:bg-cinema-gold-hover"
       : "border border-cinema-gold/40 text-cinema-gold hover:bg-cinema-gold/10";
 
-  const Tag = href ? "a" : "button";
+  const styles = `${baseStyles} ${variantStyles} ${className}`;
 
   return (
     <motion.div
@@ -59,13 +61,15 @@ export function MagneticButton({
       onMouseLeave={handleMouseLeave}
       className="inline-block"
     >
-      <Tag
-        href={href}
-        onClick={onClick}
-        className={`${baseStyles} ${variantStyles} ${className}`}
-      >
-        {children}
-      </Tag>
+      {href ? (
+        <Link href={href} className={styles}>
+          {children}
+        </Link>
+      ) : (
+        <button onClick={onClick} className={styles}>
+          {children}
+        </button>
+      )}
     </motion.div>
   );
 }

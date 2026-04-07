@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Commission a project, attend an event, or join The Unconfined Cinema collective.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact — The Unconfined Cinema",
+    description:
+      "Commission a project, attend an event, or join The Unconfined Cinema collective.",
+    type: "website",
+  },
 };
 
 const jsonLd = {

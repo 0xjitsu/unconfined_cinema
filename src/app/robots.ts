@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://unconfinedcinema.com/sitemap.xml",
+    sitemap: "https://unconfinedcinema.art/sitemap.xml",
   };
 }

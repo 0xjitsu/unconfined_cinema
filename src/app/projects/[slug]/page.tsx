@@ -16,12 +16,27 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return {};
 
+  const ogImages = project.heroImage
+    ? [{ url: project.heroImage, width: 1200, height: 630, alt: project.title }]
+    : undefined;
+
   return {
     title: project.title,
     description: project.shortDescription,
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
     openGraph: {
       title: project.title,
       description: project.shortDescription,
+      type: "article",
+      images: ogImages,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.shortDescription,
+      ...(project.heroImage ? { images: [project.heroImage] } : {}),
     },
   };
 }
@@ -45,14 +60,24 @@ export default async function ProjectPage({
     name: project.title,
     description: project.description,
     dateCreated: `${project.year}`,
+    url: `https://unconfinedcinema.art/projects/${slug}`,
+    ...(project.heroImage ? { image: `https://unconfinedcinema.art${project.heroImage}` } : {}),
     creator: {
       "@type": "Organization",
       name: "The Unconfined Cinema",
+      url: "https://unconfinedcinema.art",
+      sameAs: ["https://www.instagram.com/unconfinedcinema/"],
     },
     locationCreated: {
       "@type": "Place",
       name: project.venue,
     },
+    contributor: project.collaborators.map((name) => ({
+      "@type": "Person",
+      name,
+    })),
+    genre: project.format,
+    artMedium: project.medium,
   };
 
   return (

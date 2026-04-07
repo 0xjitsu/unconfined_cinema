@@ -34,7 +34,7 @@ export function UpcomingEvents() {
         <div className="grid gap-12 md:grid-cols-12 md:gap-16 md:items-start">
           {/* Left: title block — takes 7 cols */}
           <div className="md:col-span-7">
-            <SectionReveal>
+            <SectionReveal variant="clipLeft">
               <div className="mb-8 inline-flex items-center gap-3">
                 <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-cinema-gold" />
                 <span className="font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
@@ -45,13 +45,13 @@ export function UpcomingEvents() {
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.1}>
+            <SectionReveal delay={0.1} variant="clipLeft">
               <h2 className="font-display text-5xl font-light leading-[0.9] tracking-tight text-cinema-warm md:text-7xl lg:text-8xl">
                 {event.title}
               </h2>
             </SectionReveal>
 
-            <SectionReveal delay={0.2}>
+            <SectionReveal delay={0.2} variant="clipLeft">
               <div className="mt-8 flex flex-wrap items-center gap-4 font-mono text-sm text-cinema-muted">
                 <span>{event.venue}</span>
                 <span className="text-cinema-gray-800">·</span>
@@ -62,7 +62,7 @@ export function UpcomingEvents() {
 
           {/* Right: details block — takes 5 cols, offset down */}
           <div className="md:col-span-5 md:pt-24">
-            <SectionReveal delay={0.3}>
+            <SectionReveal delay={0.3} variant="slideRight">
               <div className="flex flex-wrap gap-2">
                 {event.collaborators.map((name) => (
                   <span
@@ -75,14 +75,14 @@ export function UpcomingEvents() {
               </div>
             </SectionReveal>
 
-            <SectionReveal delay={0.4}>
+            <SectionReveal delay={0.4} variant="slideRight">
               <div className="mt-6 h-px w-full bg-cinema-gray-800" aria-hidden="true" />
               <p className="mt-6 font-body text-base leading-relaxed text-cinema-muted">
                 {event.description}
               </p>
             </SectionReveal>
 
-            <SectionReveal delay={0.5}>
+            <SectionReveal delay={0.5} variant="slideRight">
               <div className="mt-10">
                 <MagneticButton href="/contact?type=attend" variant="outline">
                   Learn More

@@ -40,7 +40,7 @@ export function CallToAction() {
       />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionReveal>
+        <SectionReveal variant="scale">
           <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
             Collaborate
           </span>
@@ -55,7 +55,7 @@ export function CallToAction() {
         {/* Asymmetric grid: featured card + two stacked */}
         <div className="grid gap-6 md:grid-cols-5 md:gap-8">
           {/* Primary CTA — spans 3 cols, taller */}
-          <SectionReveal delay={0.1} className="md:col-span-3">
+          <SectionReveal delay={0.1} variant="slideLeft" className="md:col-span-3">
             <div className={`glass glass-hover flex h-full flex-col justify-between rounded-sm p-8 md:p-12 relative overflow-hidden min-h-[320px]`}>
               <div className={`absolute inset-0 bg-gradient-to-br ${ctas[0].accent} pointer-events-none`} aria-hidden="true" />
               <div className="relative">
@@ -78,7 +78,7 @@ export function CallToAction() {
           {/* Two stacked cards — span 2 cols */}
           <div className="flex flex-col gap-6 md:col-span-2 md:gap-8">
             {ctas.slice(1).map((cta, i) => (
-              <SectionReveal key={cta.title} delay={0.2 + i * 0.1} className="flex-1">
+              <SectionReveal key={cta.title} delay={0.2 + i * 0.1} variant="slideRight" className="flex-1">
                 <div className={`glass glass-hover flex h-full flex-col justify-between rounded-sm p-8 relative overflow-hidden`}>
                   <div className={`absolute inset-0 bg-gradient-to-br ${cta.accent} pointer-events-none`} aria-hidden="true" />
                   <div className="relative">

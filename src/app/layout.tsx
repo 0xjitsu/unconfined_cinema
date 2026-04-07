@@ -5,6 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import { GrainOverlay } from "@/components/layout/GrainOverlay";
 import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -49,6 +51,19 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/*
+ * Inline script to set data-theme before React hydrates, preventing
+ * a flash of the wrong color scheme. Content is a static string
+ * authored in this file — no user input, no XSS vector.
+ */
+const themeInitScript = [
+  "(function(){try{",
+  "var t=localStorage.getItem('theme');",
+  "if(!t){t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}",
+  "document.documentElement.setAttribute('data-theme',t);",
+  "}catch(e){}})();",
+].join("");
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,8 +73,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${cormorant.variable} ${outfit.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
       <head>
+        <script
+          // Static, author-controlled content — safe to inline
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -74,13 +94,16 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SmoothScroll>
-          <Navigation />
-          <main id="main-content">{children}</main>
-          <Footer />
-        </SmoothScroll>
+        <ThemeProvider>
+          <SmoothScroll>
+            <Navigation />
+            <main id="main-content">{children}</main>
+            <Footer />
+          </SmoothScroll>
+        </ThemeProvider>
         <GrainOverlay />
         <ScrollProgressBar />
+        <CustomCursor />
       </body>
     </html>
   );

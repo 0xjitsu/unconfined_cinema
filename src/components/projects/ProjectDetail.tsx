@@ -43,7 +43,7 @@ export function ProjectDetail({
         <div
           className="absolute inset-x-0 bottom-0 h-1/2"
           style={{
-            background: "linear-gradient(to bottom, transparent, #0A0A0A)",
+            background: "linear-gradient(to bottom, transparent, var(--color-cinema-black))",
           }}
           aria-hidden="true"
         />
@@ -81,7 +81,7 @@ export function ProjectDetail({
       <section className="bg-cinema-black py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           {/* Format tags */}
-          <SectionReveal>
+          <SectionReveal variant="slideLeft">
             <div className="mb-8 flex flex-wrap gap-2">
               {project.format.map((tag) => (
                 <span
@@ -95,7 +95,7 @@ export function ProjectDetail({
           </SectionReveal>
 
           {/* Description */}
-          <SectionReveal delay={0.1}>
+          <SectionReveal delay={0.1} variant="fadeUp">
             <p className="font-body text-lg leading-relaxed text-cinema-warm/80 md:text-xl">
               {project.description}
             </p>
@@ -122,7 +122,7 @@ export function ProjectDetail({
 
           {/* Image gallery */}
           {project.images && project.images.length > 0 && (
-            <SectionReveal delay={0.3}>
+            <SectionReveal delay={0.3} variant="clipUp">
               <div className="mt-16">
                 <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
                   Gallery

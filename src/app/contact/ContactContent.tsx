@@ -74,7 +74,7 @@ export function ContactContent() {
         <div className="grid gap-12 md:grid-cols-12 md:gap-16">
           {/* Left column — intro text */}
           <div className="md:col-span-5 md:sticky md:top-32 md:self-start">
-            <SectionReveal>
+            <SectionReveal variant="slideLeft">
               <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
                 Get in Touch
               </span>
@@ -108,45 +108,45 @@ export function ContactContent() {
           {/* Right column — form */}
           <div className="md:col-span-7">
 
-        <SectionReveal delay={0.1}>
+        <SectionReveal delay={0.1} variant="slideRight">
           <form
             onSubmit={handleSubmit}
             className="space-y-6"
           >
             {/* Name */}
-            <div>
-              <label
-                htmlFor="name"
-                className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-cinema-muted"
-              >
-                Name
-              </label>
+            <div className="relative">
               <input
                 id="name"
                 name="name"
                 type="text"
                 required
-                className="w-full border-b border-cinema-gray-800 bg-transparent px-0 py-3 font-body text-cinema-warm outline-none transition-colors focus:border-cinema-gold placeholder:text-cinema-muted/40"
-                placeholder="Your name"
+                placeholder=" "
+                className="peer w-full border-b border-cinema-gray-800 bg-transparent px-0 pt-6 pb-2 font-body text-cinema-warm outline-none transition-colors focus:border-cinema-gold"
               />
+              <label
+                htmlFor="name"
+                className="absolute left-0 top-4 font-mono text-xs uppercase tracking-[0.2em] text-cinema-muted transition-all duration-300 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-cinema-gold peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-[10px]"
+              >
+                Name
+              </label>
             </div>
 
             {/* Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-cinema-muted"
-              >
-                Email
-              </label>
+            <div className="relative">
               <input
                 id="email"
                 name="email"
                 type="email"
                 required
-                className="w-full border-b border-cinema-gray-800 bg-transparent px-0 py-3 font-body text-cinema-warm outline-none transition-colors focus:border-cinema-gold placeholder:text-cinema-muted/40"
-                placeholder="your@email.com"
+                placeholder=" "
+                className="peer w-full border-b border-cinema-gray-800 bg-transparent px-0 pt-6 pb-2 font-body text-cinema-warm outline-none transition-colors focus:border-cinema-gold"
               />
+              <label
+                htmlFor="email"
+                className="absolute left-0 top-4 font-mono text-xs uppercase tracking-[0.2em] text-cinema-muted transition-all duration-300 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-cinema-gold peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-[10px]"
+              >
+                Email
+              </label>
             </div>
 
             {/* Type */}
@@ -177,21 +177,21 @@ export function ContactContent() {
             </div>
 
             {/* Message */}
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-cinema-muted"
-              >
-                Message
-              </label>
+            <div className="relative">
               <textarea
                 id="message"
                 name="message"
                 rows={5}
                 required
-                className="w-full resize-none border-b border-cinema-gray-800 bg-transparent px-0 py-3 font-body text-cinema-warm outline-none transition-colors focus:border-cinema-gold placeholder:text-cinema-muted/40"
-                placeholder="Tell us about your project or interest..."
+                placeholder=" "
+                className="peer w-full resize-none border-b border-cinema-gray-800 bg-transparent px-0 pt-6 pb-2 font-body text-cinema-warm outline-none transition-colors focus:border-cinema-gold"
               />
+              <label
+                htmlFor="message"
+                className="absolute left-0 top-4 font-mono text-xs uppercase tracking-[0.2em] text-cinema-muted transition-all duration-300 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-cinema-gold peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-[10px]"
+              >
+                Message
+              </label>
             </div>
 
             {/* Error */}

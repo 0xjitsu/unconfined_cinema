@@ -1,35 +1,43 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { heroTitle, heroWord, fadeIn } from "@/lib/animations";
+import { charReveal, charContainer, fadeIn } from "@/lib/animations";
 
-const words = ["The", "Unconfined", "Cinema"];
+interface WordConfig {
+  text: string;
+  delayChildren: number;
+  fontSize: string;
+  italic?: boolean;
+}
+
+const words: WordConfig[] = [
+  { text: "The", delayChildren: 0.3, fontSize: "clamp(2.5rem, 10vw, 8rem)" },
+  { text: "Unconfined", delayChildren: 0.5, fontSize: "clamp(3rem, 13vw, 11rem)", italic: true },
+  { text: "Cinema", delayChildren: 0.7, fontSize: "clamp(2.5rem, 10vw, 8rem)" },
+];
 
 export function Hero() {
   return (
     <section className="relative flex h-dvh items-center justify-center overflow-hidden bg-cinema-black">
-      {/* Animated gradient background */}
       <div
         className="absolute inset-0 animate-gradient opacity-40"
         style={{
           background:
-            "radial-gradient(ellipse at 20% 50%, #1a1a2e 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, #2d1b3d 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, #1a0a0a 0%, transparent 50%)",
+            "radial-gradient(ellipse at 20% 50%, var(--hero-grad-1) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, var(--hero-grad-2) 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, var(--hero-grad-3) 0%, transparent 50%)",
           backgroundSize: "200% 200%",
         }}
         aria-hidden="true"
       />
 
-      {/* Vignette */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 40%, rgba(10,10,10,0.8) 100%)",
+            `radial-gradient(ellipse at center, transparent 40%, var(--hero-vignette) 100%)`,
         }}
         aria-hidden="true"
       />
 
-      {/* Decorative side text */}
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -40,7 +48,6 @@ export function Hero() {
         Est. 2020 — Manila, Philippines
       </motion.span>
 
-      {/* Content */}
       <div className="relative z-10 px-6 text-center">
         <motion.div
           initial={{ scaleX: 0 }}
@@ -50,26 +57,39 @@ export function Hero() {
           aria-hidden="true"
         />
 
-        <motion.h1
-          variants={heroTitle}
-          initial="hidden"
-          animate="visible"
-          className="font-display font-light uppercase leading-[0.85] tracking-[-0.02em]"
-        >
-          {words.map((word, i) => (
-            <motion.span
-              key={word}
-              variants={heroWord}
-              className={`block text-cinema-warm ${i === 1 ? "italic tracking-[0.05em]" : ""}`}
+        <h1 className="font-display font-light uppercase leading-[0.85] tracking-[-0.02em]">
+          {words.map((word, wordIndex) => (
+            <motion.div
+              key={word.text}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.025,
+                    delayChildren: word.delayChildren,
+                  },
+                },
+              }}
+              initial="hidden"
+              animate="visible"
+              className="flex justify-center overflow-hidden"
               style={{
-                fontSize: i === 1 ? "clamp(3rem, 13vw, 11rem)" : "clamp(2.5rem, 10vw, 8rem)",
-                transform: `translateY(${i * -4}px)`,
+                transform: `translateY(${wordIndex * -4}px)`,
               }}
             >
-              {word}
-            </motion.span>
+              {word.text.split("").map((char, charIndex) => (
+                <motion.span
+                  key={charIndex}
+                  variants={charReveal}
+                  className={`inline-block text-cinema-warm ${word.italic ? "italic tracking-[0.05em]" : ""}`}
+                  style={{ fontSize: word.fontSize }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.div>
           ))}
-        </motion.h1>
+        </h1>
 
         <motion.div
           initial={{ scaleX: 0 }}
@@ -90,7 +110,6 @@ export function Hero() {
         </motion.p>
       </div>
 
-      {/* Scroll indicator — positioned left for asymmetry */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -109,7 +128,6 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Year marker — bottom right */}
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

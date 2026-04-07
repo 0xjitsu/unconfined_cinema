@@ -22,7 +22,7 @@ export function AboutContent() {
       {/* Hero */}
       <section className="flex min-h-[50vh] items-end pb-16 pt-32 md:pb-24 md:pt-40">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <SectionReveal>
+          <SectionReveal variant="clipDown">
             <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
               About
             </span>
@@ -63,6 +63,7 @@ export function AboutContent() {
               <SectionReveal
                 key={founder.name}
                 delay={i * 0.15}
+                variant={i % 2 === 0 ? "slideLeft" : "slideRight"}
                 className={i === 0 ? "md:col-span-7" : "md:col-span-5 md:pt-16"}
               >
                 <div className="relative">
@@ -103,7 +104,7 @@ export function AboutContent() {
               {projects.map((project, i) => {
                 const isEven = i % 2 === 0;
                 return (
-                  <SectionReveal key={project.slug} delay={i * 0.05}>
+                  <SectionReveal key={project.slug} delay={i * 0.05} variant={i % 2 === 0 ? "slideLeft" : "slideRight"}>
                     <div className={`flex gap-8 md:gap-0 ${isEven ? "md:pr-[52%]" : "md:pl-[52%]"}`}>
                       <div className="flex flex-col items-center md:hidden">
                         <span className="font-mono text-sm text-cinema-gold">

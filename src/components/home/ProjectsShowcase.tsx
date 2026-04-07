@@ -1,19 +1,68 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { projects } from "@/lib/projects";
+import type { Project } from "@/lib/projects";
 import { SectionReveal } from "@/components/ui/SectionReveal";
+import type { RevealVariant } from "@/lib/animations";
 
 const noiseOverlay =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
-/* Each project gets a different visual treatment for asymmetry */
 const layouts = [
   { aspect: "aspect-[4/5] md:aspect-[16/10]", offset: "md:ml-0 md:mr-[15%]", align: "items-start" },
   { aspect: "aspect-[3/2] md:aspect-[21/9]", offset: "md:ml-[20%] md:mr-0", align: "items-end md:text-right" },
   { aspect: "aspect-[1/1] md:aspect-[4/3]", offset: "md:ml-[8%] md:mr-[8%]", align: "items-start" },
 ];
+
+const revealSequence: RevealVariant[] = ["clipUp", "slideRight", "fadeUp"];
+
+function ParallaxImage({ project, layout }: { project: Project; layout: typeof layouts[0] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+
+  return (
+    <div ref={ref} className={`relative ${layout.offset}`}>
+      <div
+        className={`relative ${layout.aspect} w-full overflow-hidden`}
+        style={{
+          background: `linear-gradient(${project.gradientAngle}deg, ${project.gradientFrom}, ${project.gradientTo})`,
+        }}
+      >
+        <motion.div style={{ y }} className="absolute inset-[-15%]">
+          {project.heroImage && (
+            <Image
+              src={project.heroImage}
+              alt={project.subtitle ?? project.title}
+              fill
+              className="object-cover w-full h-full"
+              sizes="(max-width: 768px) 100vw, 85vw"
+            />
+          )}
+        </motion.div>
+        <div
+          className="absolute inset-0 opacity-20 mix-blend-overlay"
+          style={{ backgroundImage: noiseOverlay, backgroundSize: "256px 256px" }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-cinema-black/0 transition-colors duration-500 group-hover:bg-cinema-black/40">
+          <span
+            className="font-mono text-xs uppercase tracking-[0.3em] text-cinema-warm transition-all duration-500"
+            style={{ clipPath: "inset(0 100% 0 0)" }}
+          >
+            <span className="group-hover:[clip-path:inset(0_0_0_0)] [clip-path:inset(0_100%_0_0)] transition-[clip-path] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] inline-block">
+              View Project →
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function ProjectsShowcase() {
   const featured = projects.filter((p) => !p.isUpcoming);
@@ -42,12 +91,12 @@ export function ProjectsShowcase() {
           {featured.map((project, i) => {
             const layout = layouts[i % layouts.length];
             const isEven = i % 2 === 1;
+            const variant = revealSequence[i % revealSequence.length];
 
             return (
-              <SectionReveal key={project.slug} delay={i * 0.1}>
+              <SectionReveal key={project.slug} delay={i * 0.1} variant={variant}>
                 <Link href={`/projects/${project.slug}`} className="group block">
                   <article className="relative">
-                    {/* Decorative project number */}
                     <span
                       className={`absolute -top-8 font-display text-[7rem] font-light leading-none text-cinema-warm/[0.04] select-none md:text-[10rem] ${isEven ? "right-0" : "left-0"}`}
                       aria-hidden="true"
@@ -55,37 +104,8 @@ export function ProjectsShowcase() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
-                    {/* Image — asymmetric sizing per project */}
-                    <div className={`relative ${layout.offset}`}>
-                      <div
-                        className={`relative ${layout.aspect} w-full overflow-hidden`}
-                        style={{
-                          background: `linear-gradient(${project.gradientAngle}deg, ${project.gradientFrom}, ${project.gradientTo})`,
-                        }}
-                      >
-                        {project.heroImage && (
-                          <Image
-                            src={project.heroImage}
-                            alt={project.subtitle ?? project.title}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 85vw"
-                          />
-                        )}
-                        <div
-                          className="absolute inset-0 opacity-20 mix-blend-overlay"
-                          style={{ backgroundImage: noiseOverlay, backgroundSize: "256px 256px" }}
-                          aria-hidden="true"
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-cinema-black/0 transition-colors duration-500 group-hover:bg-cinema-black/40">
-                          <span className="translate-y-4 font-mono text-xs uppercase tracking-[0.3em] text-cinema-warm opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                            View Project →
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    <ParallaxImage project={project} layout={layout} />
 
-                    {/* Info — offset opposite to image */}
                     <div className={`mt-6 flex flex-col gap-2 ${layout.align} md:mt-8`}>
                       <div className={`max-w-xl ${isEven ? "md:ml-auto" : ""}`}>
                         <div className="mb-2 flex items-center gap-3">

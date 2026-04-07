@@ -1,21 +1,27 @@
 "use client";
 
+import { useScroll, useVelocity, useTransform, useSpring, motion } from "framer-motion";
 import { allCollaborators } from "@/lib/projects";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 
 export function Collaborators() {
-  // Double the list for seamless loop
   const row1 = [...allCollaborators, ...allCollaborators];
   const row2 = [...allCollaborators.slice().reverse(), ...allCollaborators.slice().reverse()];
 
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const skew = useSpring(
+    useTransform(scrollVelocity, [-3000, 0, 3000], [-3, 0, 3]),
+    { stiffness: 100, damping: 30 }
+  );
+
   return (
     <section className="relative overflow-hidden bg-cinema-black py-24 md:py-40">
-      {/* Decorative horizontal rule */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="h-px w-full bg-gradient-to-r from-transparent via-cinema-gray-800 to-transparent" aria-hidden="true" />
       </div>
 
-      <SectionReveal className="mx-auto max-w-7xl px-6 pt-20 lg:px-8 md:pt-24">
+      <SectionReveal variant="fade" className="mx-auto max-w-7xl px-6 pt-20 lg:px-8 md:pt-24">
         <div className="flex items-end justify-between">
           <span className="mb-12 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
             Collaborators
@@ -27,9 +33,11 @@ export function Collaborators() {
       </SectionReveal>
 
       <div className="space-y-4 marquee-container md:space-y-8">
-        {/* Row 1 — left, larger */}
         <div className="flex overflow-hidden">
-          <div className="animate-marquee flex shrink-0 items-center gap-6 md:gap-12">
+          <motion.div
+            style={{ skewX: skew }}
+            className="animate-marquee flex shrink-0 items-center gap-6 md:gap-12"
+          >
             {row1.map((name, i) => (
               <span
                 key={`r1-${i}`}
@@ -40,12 +48,14 @@ export function Collaborators() {
                 <span className="mx-3 inline-block text-cinema-gold/20 md:mx-6" aria-hidden="true">·</span>
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        {/* Row 2 — right, smaller for visual hierarchy */}
         <div className="flex overflow-hidden">
-          <div className="animate-marquee-reverse flex shrink-0 items-center gap-6 md:gap-12">
+          <motion.div
+            style={{ skewX: skew }}
+            className="animate-marquee-reverse flex shrink-0 items-center gap-6 md:gap-12"
+          >
             {row2.map((name, i) => (
               <span
                 key={`r2-${i}`}
@@ -56,7 +66,7 @@ export function Collaborators() {
                 <span className="mx-3 inline-block text-cinema-gold/10 md:mx-6" aria-hidden="true">—</span>
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -217,18 +217,13 @@ export function ProjectsShowcase() {
     <section id="projects" className="relative bg-cinema-black py-24 md:py-48 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionReveal>
-          <div className="flex items-end justify-between">
-            <div>
-              <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
-                Selected Works
-              </span>
-              <h2 className="font-display text-4xl font-light tracking-tight text-cinema-warm md:text-6xl">
-                Projects
-              </h2>
-            </div>
-            <span className="hidden font-display text-[8rem] font-light leading-none text-cinema-warm/[0.03] md:block">
-              {String(featured.length).padStart(2, "0")}
+          <div>
+            <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
+              Selected Works
             </span>
+            <h2 className="font-display text-4xl font-light tracking-tight text-cinema-warm md:text-6xl">
+              Projects
+            </h2>
           </div>
           <div className="mt-8 mb-16 h-px w-full bg-gradient-to-r from-cinema-gold/40 via-cinema-gray-800 to-transparent md:mb-20" />
         </SectionReveal>

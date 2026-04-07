@@ -1,6 +1,6 @@
 "use client";
 
-import { TextReveal } from "@/components/ui/TextReveal";
+import { FilmCanvas } from "@/components/ui/FilmCanvas";
 
 const manifesto =
   "The Unconfined Cinema was formed in 2020 as an effort to explore what cinema is and what else it could be. It is a platform that seeks to present cinema in an unconventional fashion: designing unusual spaces to showcase films, facilitating conversations about the craft, staging performances that bring art to life, and producing work that challenges norms.";
@@ -12,7 +12,7 @@ export function Manifesto() {
         <span className="mb-12 block font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
           Manifesto
         </span>
-        <TextReveal text={manifesto} />
+        <FilmCanvas text={manifesto} />
       </div>
     </section>
   );

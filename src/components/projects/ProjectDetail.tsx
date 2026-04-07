@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { CinematicGallery } from "@/components/ui/CinematicGallery";
+import { FilmHoverText } from "@/components/ui/FilmHoverText";
 import { fadeIn, heroTitle, heroWord } from "@/lib/animations";
 
 const noiseOverlay =
@@ -174,11 +175,12 @@ export function ProjectDetail({
             </div>
           </SectionReveal>
 
-          {/* Description */}
+          {/* Description — hover scramble effect */}
           <SectionReveal delay={0.1} variant="fadeUp">
-            <p className="font-body text-lg leading-relaxed text-cinema-warm/80 md:text-xl">
-              {project.description}
-            </p>
+            <FilmHoverText
+              text={project.description}
+              className="font-body text-lg leading-relaxed text-cinema-warm/80 md:text-xl"
+            />
           </SectionReveal>
 
           {/* Collaborators */}

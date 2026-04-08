@@ -124,6 +124,7 @@ export const projects: Project[] = [
     gradientTo: "#0a1a0a",
     gradientAngle: 160,
     heroImage: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg",
+    heroVideo: "/images/projects/revolutions-refrains-songs/trailer.mp4",
     images: [
       { src: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg", alt: "Orange wall with Revolutions, Refrains, Songs handwritten title", aspect: "landscape" },
       { src: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Gallery screening room with film projection", aspect: "landscape" },
@@ -131,10 +132,12 @@ export const projects: Project[] = [
       { src: "/images/projects/revolutions-refrains-songs/installation-still-2.jpg", alt: "Pink gallery walls with poetry and text panels", aspect: "landscape" },
     ],
     videos: [
+      { src: "/images/projects/revolutions-refrains-songs/trailer.mp4", poster: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg", alt: "Revolutions, Refrains, Songs exhibition trailer", aspect: "landscape" },
       { src: "/images/projects/revolutions-refrains-songs/installation-video-1.mp4", poster: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Multi-screen film installation playing in gallery", aspect: "landscape" },
       { src: "/images/projects/revolutions-refrains-songs/installation-video-2.mp4", poster: "/images/projects/revolutions-refrains-songs/installation-still-1.jpg", alt: "Film projection in dark gallery room", aspect: "wide" },
     ],
     media: [
+      { type: "video", src: "/images/projects/revolutions-refrains-songs/trailer.mp4", poster: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg", alt: "Revolutions, Refrains, Songs exhibition trailer", aspect: "landscape" },
       { type: "image", src: "/images/projects/revolutions-refrains-songs/gallery-title-wall.jpg", alt: "Orange wall with Revolutions, Refrains, Songs handwritten title", aspect: "landscape" },
       { type: "video", src: "/images/projects/revolutions-refrains-songs/installation-video-1.mp4", poster: "/images/projects/revolutions-refrains-songs/screening-room.jpg", alt: "Multi-screen film installation playing in gallery", aspect: "landscape" },
       { type: "image", src: "/images/projects/revolutions-refrains-songs/installation-still-2.jpg", alt: "Pink gallery walls with poetry and text panels", aspect: "portrait" },

@@ -26,7 +26,6 @@ export interface Project {
   shortDescription: string;
   description: string;
   collaborators: string[];
-  isUpcoming: boolean;
   gradientFrom: string;
   gradientTo: string;
   gradientAngle: number;
@@ -54,7 +53,6 @@ export const projects: Project[] = [
       "Bea Alonzo",
       "Martika Escobar",
     ],
-    isUpcoming: false,
     gradientFrom: "#1a1a2e",
     gradientTo: "#16213e",
     gradientAngle: 135,
@@ -95,7 +93,6 @@ export const projects: Project[] = [
       "John Lloyd Cruz",
       "Bea Alonzo",
     ],
-    isUpcoming: false,
     gradientFrom: "#2d1b3d",
     gradientTo: "#1a1a2e",
     gradientAngle: 200,
@@ -123,7 +120,6 @@ export const projects: Project[] = [
       "John Torres",
       "Martika Escobar",
     ],
-    isUpcoming: false,
     gradientFrom: "#1a2e1a",
     gradientTo: "#0a1a0a",
     gradientAngle: 160,
@@ -159,7 +155,6 @@ export const projects: Project[] = [
     description:
       "A two-day film workshop exploring the boundaries of slow cinema and collective dreaming. Led by legendary slow-cinema director Lav Diaz and artist Silke Lapina. Participants engaged in intensive exercises blending introspection, movement, and the moving image. March 14–15, 2026.",
     collaborators: ["Lav Diaz", "Silke Lapina"],
-    isUpcoming: false,
     gradientFrom: "#2e1a1a",
     gradientTo: "#1a0a0a",
     gradientAngle: 180,
@@ -175,14 +170,6 @@ export const projects: Project[] = [
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
-}
-
-export function getUpcomingProjects(): Project[] {
-  return projects.filter((p) => p.isUpcoming);
-}
-
-export function getPastProjects(): Project[] {
-  return projects.filter((p) => !p.isUpcoming);
 }
 
 export function getNextProject(currentSlug: string): Project | undefined {

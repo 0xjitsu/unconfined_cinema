@@ -52,7 +52,7 @@ export default async function ProjectPage({
 
   const nextProject = getNextProject(slug);
   const prevProject = getPrevProject(slug);
-  const projectIndex = projects.filter((p) => !p.isUpcoming).findIndex((p) => p.slug === slug);
+  const projectIndex = projects.findIndex((p) => p.slug === slug);
 
   const jsonLd = {
     "@context": "https://schema.org",

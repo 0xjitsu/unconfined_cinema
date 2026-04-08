@@ -209,7 +209,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
    ═══════════════════════════════════════════════ */
 
 export function ProjectsShowcase() {
-  const featured = projects.filter((p) => !p.isUpcoming);
+  const featured = projects;
 
   return (
     <section id="projects" className="relative bg-cinema-black py-24 md:py-48 scroll-mt-20">

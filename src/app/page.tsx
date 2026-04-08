@@ -7,7 +7,9 @@ import { CallToAction } from "@/components/home/CallToAction";
 const Manifesto = dynamic(() => import("@/components/home/Manifesto").then((m) => m.Manifesto), {
   loading: () => <div className="min-h-[60vh] bg-cinema-black animate-pulse" />,
 });
-const UpcomingEvents = dynamic(() => import("@/components/home/UpcomingEvents").then((m) => m.UpcomingEvents));
+const EventsTeaser = dynamic(() => import("@/components/home/EventsTeaser").then((m) => m.EventsTeaser), {
+  loading: () => <div className="min-h-[40vh] bg-cinema-dark animate-pulse" />,
+});
 const Collaborators = dynamic(() => import("@/components/home/Collaborators").then((m) => m.Collaborators), {
   loading: () => <div className="min-h-[40vh] bg-cinema-black animate-pulse" />,
 });
@@ -71,7 +73,7 @@ export default function HomePage() {
         <ProjectsShowcase />
       </div>
       <div className="contain-section">
-        <UpcomingEvents />
+        <EventsTeaser />
       </div>
       <div className="contain-section">
         <Collaborators />

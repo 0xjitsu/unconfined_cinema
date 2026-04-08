@@ -26,6 +26,7 @@ export function Footer() {
             <nav className="flex flex-col gap-2" aria-label="Footer">
               {[
                 { href: "/#projects", label: "Projects" },
+                { href: "/events", label: "Events" },
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (

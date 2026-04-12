@@ -108,13 +108,13 @@ export function AboutContent() {
                     <div className={`flex gap-8 md:gap-0 ${isEven ? "md:pr-[52%]" : "md:pl-[52%]"}`}>
                       <div className="flex flex-col items-center md:hidden">
                         <span className="font-mono text-sm text-cinema-gold">
-                          {project.year}
+                          {project.displayDate ?? project.year}
                         </span>
                         <div className="mt-2 h-full w-px bg-cinema-gray-800" />
                       </div>
                       <div className="pb-8">
                         <span className="hidden font-mono text-sm text-cinema-gold md:block">
-                          {project.year}
+                          {project.displayDate ?? project.year}
                         </span>
                         <h3 className="font-display text-xl font-light text-cinema-warm md:mt-2 md:text-2xl">
                           {project.title}

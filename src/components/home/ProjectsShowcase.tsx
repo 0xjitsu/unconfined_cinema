@@ -171,7 +171,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </span>
             <span className="h-px flex-1 bg-cinema-gold/20" aria-hidden="true" />
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-cinema-muted/60">
-              {project.year}
+              {project.displayDate ?? project.year}
             </span>
           </div>
 
@@ -181,7 +181,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <div className={`max-w-xl ${isEven ? "md:ml-auto" : ""}`}>
               <div className="mb-2 hidden items-center gap-3 md:flex">
                 <span className="font-mono text-xs text-cinema-gold">
-                  {project.year}
+                  {project.displayDate ?? project.year}
                 </span>
                 <span className="h-px w-8 bg-cinema-gold/30" aria-hidden="true" />
                 <span className="font-mono text-xs text-cinema-muted/60">

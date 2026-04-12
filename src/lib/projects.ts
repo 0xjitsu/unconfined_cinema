@@ -20,6 +20,7 @@ export interface Project {
   title: string;
   subtitle?: string;
   year: number;
+  displayDate?: string;
   venue: string;
   medium: string;
   format: string[];
@@ -41,6 +42,7 @@ export const projects: Project[] = [
     slug: "the-unconfined-cinema-1",
     title: "The Unconfined Cinema #1",
     year: 2020,
+    displayDate: "February 2020",
     venue: "Art Fair Philippines, Makati Stock Exchange",
     medium: "Outdoor cinema, triptych video installation, live performance",
     format: ["Installation", "Live Performance", "Screening"],

@@ -135,7 +135,7 @@ export function ProjectDetail({
                 </span>
               )}
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-cinema-gold">
-                {project.year} · {project.venue}
+                {project.displayDate ?? project.year} · {project.venue}
               </span>
             </motion.div>
             <motion.h1

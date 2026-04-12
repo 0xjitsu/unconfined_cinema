@@ -1,10 +1,10 @@
 <div align="center">
 
-# The Unconfined Cinema
+# 🎬 The Unconfined Cinema
 
 **Where Philippine Cinema Escapes the Screen**
 
-An immersive cinematic landing page for a Filipino art collective exploring what cinema is — and what else it could be.
+The digital home of a Filipino art collective exploring what cinema is — and what else it could be.
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=flat-square)](LICENSE)
 [![Deploy: Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=flat-square&logo=vercel)](https://unconfinedcinema.art)
@@ -13,21 +13,28 @@ An immersive cinematic landing page for a Filipino art collective exploring what
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=flat-square&logo=framer)](https://www.framer.com/motion/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-C8A97E?style=flat-square)](CONTRIBUTING.md)
 
-[Quick Start](#quick-start) · [Features](#features) · [Deploy](https://unconfinedcinema.art)
+[🌐 Visit Site](https://unconfinedcinema.art) · [🚀 Quick Start](#-quick-start) · [✨ Features](#-features) · [🤖 AI Agents](#-ai-agent-ready)
 
 </div>
 
 ---
 
-## Why This Exists
+## 🎥 What Is The Unconfined Cinema?
 
-The Unconfined Cinema is a Filipino art collective founded in 2020 by **Erwin Romulo** and **Philbert Dy**. They design immersive, unconventional spaces to experience film — blurring the boundaries between cinema, performance, and installation art. Think TeamLab, but for Philippine cinema.
+**The Unconfined Cinema** was formed in 2020 by **Erwin Romulo** and **Philbert Dy** as an effort to explore what cinema is and what else it could be. It is a platform that presents cinema in an unconventional fashion:
 
-Since 2020, the collective has mounted four projects with collaborators including **Antoinette Jadaone**, **John Lloyd Cruz**, **Bea Alonzo**, **Martika Escobar**, **Nick DeOcampo**, **John Torres**, **Lav Diaz**, and **Silke Lapina**.
+- 🏛️ **Designing unusual spaces** to showcase films
+- 💬 **Facilitating conversations** about the craft
+- 🎭 **Staging performances** that bring art to life
+- 🎞️ **Producing work** that challenges norms
 
-This is their digital home — a cinematic landing page that feels like entering a dark gallery where a film is about to begin.
+> Think TeamLab, but for Philippine cinema.
 
-## Quick Start
+Since 2020, the collective has mounted **seven projects** with collaborators including **Antoinette Jadaone**, **John Lloyd Cruz**, **Bea Alonzo**, **Martika Escobar**, **Nick DeOcampo**, **John Torres**, **Roxlee**, **Dodo Dayao**, **Furball**, **Silke Lapina**, and **Lav Diaz**.
+
+This website is their digital home — an immersive, cinematic experience that feels like entering a dark gallery where a film is about to begin.
+
+## 🚀 Quick Start
 
 ```bash
 git clone https://github.com/0xjitsu/unconfined_cinema.git
@@ -38,44 +45,60 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Features
+## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| Cinematic Design System | Dark palette, Cormorant Garamond serif, film grain overlay, glass morphism |
-| Word-by-Word Text Reveal | Scroll-linked manifesto animation that unfolds as you scroll |
-| Project Showcase | Asymmetric gallery cards with video autoplay on hover |
-| Events Integration | Featured event spotlight powered by Luma calendar |
-| Collaborator Marquee | Dual-direction name marquee featuring the collective's collaborators |
-| Smooth Scroll | Lenis smooth scroll with `prefers-reduced-motion` fallback |
-| Framer Motion | Purposeful animations — fade-ups, staggered reveals, magnetic buttons |
-| SEO Infrastructure | Sitemap, robots.txt, JSON-LD, dynamic OG images, dynamic favicon |
-| AI Agent Ready | `/llms.txt`, `/llms-full.txt`, `/.well-known/ai-plugin.json` |
-| Accessibility | Skip nav, focus rings, WCAG AA contrast, 44px touch targets, reduced-motion |
-| Contact Form | Supabase-powered API route for commission and collaboration inquiries |
+| | Feature | Description |
+|---|---------|-------------|
+| 🎨 | **Cinematic Design System** | Dark palette, Cormorant Garamond serif, film grain overlay, glass morphism |
+| 📜 | **Word-by-Word Text Reveal** | Scroll-linked manifesto animation that unfolds as you scroll |
+| 🖼️ | **Project Showcase** | 7 projects with asymmetric gallery cards and video autoplay |
+| 📅 | **Events Integration** | Featured event spotlight powered by Luma calendar |
+| 🎭 | **Collaborator Marquee** | Dual-direction name marquee of 13 collaborators |
+| 🌊 | **Smooth Scroll** | Lenis smooth scroll with `prefers-reduced-motion` fallback |
+| ✨ | **Framer Motion** | Purposeful animations — fade-ups, staggered reveals, magnetic buttons |
+| 🔍 | **SEO Infrastructure** | Sitemap, robots.txt, JSON-LD, dynamic OG images, dynamic favicon |
+| 🤖 | **AI Agent Ready** | `/llms.txt`, `/llms-full.txt`, `/.well-known/ai-plugin.json` |
+| ♿ | **Accessibility** | Skip nav, focus rings, WCAG AA contrast, 44px touch targets, reduced-motion |
+| 📬 | **Contact Form** | Supabase-powered API route for commission and collaboration inquiries |
 
-## How It Works
+## 🗺️ Site Map
 
 ```
-Homepage (long scroll)
-├── Hero           — typographic title, animated gradient, custom cursor
-├── Manifesto      — scroll-linked word-by-word text reveal
-├── Projects       — asymmetric gallery cards with video autoplay
-├── Events         — featured upcoming event spotlight (Luma)
-├── Collaborators  — dual-direction name marquee
-└── Call to Action  — commission / attend / join
+🏠 Homepage (long scroll)
+├── 🎬 Hero           — typographic title, animated gradient, custom cursor
+├── 📜 Manifesto      — scroll-linked word-by-word text reveal
+├── 🖼️ Projects       — asymmetric gallery cards with video autoplay
+├── 📅 Events         — featured upcoming event spotlight (Luma)
+├── 🎭 Collaborators  — dual-direction name marquee
+└── 📨 Call to Action  — commission / attend / join
 
-/projects/[slug]   — SSG detail pages for 4 projects:
-                     UC#1 (2020), Love Team (2020),
-                     Revolutions Refrains Songs (2022),
-                     Dreams Introspection Moving (2026)
+🎞️ /projects/[slug]   — SSG detail pages for 7 projects:
+   #1 Art Fair Philippines (2020)
+   #2 Love Team (2020)
+   #3 Revolutions, Refrains, Songs (2022)
+   #4 The Super 8 Forum
+   #5 Moving Image in the Time of Total Lockdown
+   #6 A Conversation on Horror
+   #7 Dreams. Introspection. Moving Images.
 
-/about             — collective info, founders, timeline
-/contact           — glass morphism form with ?type= pre-select
-/events            — upcoming events page
+📖 /about             — collective info, founders, timeline
+📬 /contact           — glass morphism form with ?type= pre-select
+📅 /events            — Luma calendar embed
 ```
 
-## Project Structure
+## 🤖 AI Agent Ready
+
+This site is built for both humans and AI agents. Three endpoints provide machine-readable context:
+
+| Endpoint | Purpose |
+|----------|---------|
+| [`/llms.txt`](https://unconfinedcinema.art/llms.txt) | Concise site overview following the [llmstxt.org](https://llmstxt.org) standard |
+| [`/llms-full.txt`](https://unconfinedcinema.art/llms-full.txt) | Complete structured data dump — all projects, collaborators, descriptions |
+| [`/.well-known/ai-plugin.json`](https://unconfinedcinema.art/.well-known/ai-plugin.json) | Agent manifest declaring AI-accessible endpoints |
+
+AI agents can discover the collective, understand its projects, and provide informed responses about The Unconfined Cinema without scraping the website.
+
+## 📁 Project Structure
 
 ```
 src/
@@ -144,18 +167,26 @@ public/images/projects/[project-slug]/[descriptor].jpg
 
 Then update `src/lib/projects.ts` with image paths.
 
-### Deployment
+### 🚢 Deployment Pipeline
 
-The site auto-deploys to [unconfinedcinema.art](https://unconfinedcinema.art) via Vercel Git integration on push to `feat/landing-page`.
+```
+feat/* branch → PR → test branch → main branch → 🌐 Production
+```
+
+| Branch | Purpose |
+|--------|---------|
+| `feat/*` | Feature development — create PRs from here |
+| `test` | Staging — PRs target this branch first |
+| `main` | Production — auto-deploys to [unconfinedcinema.art](https://unconfinedcinema.art) via Vercel |
 
 ```bash
-# Manual production deploy
+# Manual production deploy (if needed)
 npx vercel --prod
 ```
 
 </details>
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -168,7 +199,7 @@ npx vercel --prod
 | Backend | ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white) |
 | Hosting | ![Vercel](https://img.shields.io/badge/Vercel-black?style=flat-square&logo=vercel) |
 
-## License
+## 📄 License
 
 <div align="center">
 
@@ -188,10 +219,10 @@ Derivative works must also be open-sourced under AGPL v3.
 
 <div align="center">
 
-**The Unconfined Cinema** — Where Philippine Cinema Escapes the Screen
+🎬 **The Unconfined Cinema** — Where Philippine Cinema Escapes the Screen
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/0xjitsu/unconfined_cinema)
 
-[Get Started](#quick-start) · [Report a Bug](https://github.com/0xjitsu/unconfined_cinema/issues) · [Request a Feature](https://github.com/0xjitsu/unconfined_cinema/issues)
+[🌐 Visit Site](https://unconfinedcinema.art) · [🐛 Report a Bug](https://github.com/0xjitsu/unconfined_cinema/issues) · [💡 Request a Feature](https://github.com/0xjitsu/unconfined_cinema/issues)
 
 </div>

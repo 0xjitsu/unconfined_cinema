@@ -110,7 +110,7 @@ export const projects: Project[] = [
     slug: "revolutions-refrains-songs",
     title: "The Unconfined Cinema #3: Revolutions, Refrains, Songs",
     subtitle: "Revolutions, Refrains, Songs",
-    year: 2022,
+    year: 2021,
     venue: "ArtInformal, San Juan",
     medium: "Multi-screen film installation",
     format: ["Installation", "Screening"],

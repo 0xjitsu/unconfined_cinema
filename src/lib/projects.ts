@@ -179,11 +179,9 @@ export const projects: Project[] = [
     collaborators: ["Furball"],
     heroImage: "/images/projects/moving-image-lockdown/poster.jpg",
     media: [
-      { src: "/images/projects/moving-image-lockdown/poster.jpg", alt: "Unconfined Cinema #5: Moving Image in the Time of Total Lockdown — Jumpcut 5: Videoke Philippinen at Daadgalerie, Berlin, August 27 2024", aspect: "portrait" },
-    ],
-    mediaContent: [
       { type: "image", src: "/images/projects/moving-image-lockdown/poster.jpg", alt: "Unconfined Cinema #5: Moving Image in the Time of Total Lockdown — Jumpcut 5: Videoke Philippinen at Daadgalerie, Berlin, August 27 2024", aspect: "portrait" },
     ],
+
     gradientFrom: "#1a1a2e",
     gradientTo: "#0a0a1a",
     gradientAngle: 200,
@@ -222,13 +220,13 @@ export const projects: Project[] = [
     heroImage: "/images/projects/dreams-introspection-moving/poster.jpg",
     heroVideo: "/images/projects/dreams-introspection-moving/video-01.mp4",
     media: [
-      { src: "/images/projects/dreams-introspection-moving/poster.jpg", alt: "Dreams. Introspection. Moving Images. — workshop poster, Project Space Pilipinas, Lucban 2026", aspect: "landscape" },
-      { src: "/images/projects/dreams-introspection-moving/photo-01.jpg", alt: "Dreams. Introspection. Moving Images. workshop participants, Lucban 2026", aspect: "portrait" },
-      { src: "/images/projects/dreams-introspection-moving/photo-02.jpg", alt: "Dreams. Introspection. Moving Images. workshop session, Lucban 2026", aspect: "landscape" },
-      { src: "/images/projects/dreams-introspection-moving/photo-03.jpg", alt: "Dreams. Introspection. Moving Images. workshop session, Lucban 2026", aspect: "landscape" },
-      { src: "/images/projects/dreams-introspection-moving/photo-04.jpg", alt: "Dreams. Introspection. Moving Images. workshop, Lucban 2026", aspect: "portrait" },
-      { src: "/images/projects/dreams-introspection-moving/photo-05.jpg", alt: "Dreams. Introspection. Moving Images. workshop, Lucban 2026", aspect: "portrait" },
-      { src: "/images/projects/dreams-introspection-moving/photo-06.jpg", alt: "Dreams. Introspection. Moving Images. field visit, Lucban 2026", aspect: "portrait" },
+      { type: "image", src: "/images/projects/dreams-introspection-moving/poster.jpg", alt: "Dreams. Introspection. Moving Images. — workshop poster, Project Space Pilipinas, Lucban 2026", aspect: "landscape" },
+      { type: "image", src: "/images/projects/dreams-introspection-moving/photo-01.jpg", alt: "Dreams. Introspection. Moving Images. workshop participants, Lucban 2026", aspect: "portrait" },
+      { type: "image", src: "/images/projects/dreams-introspection-moving/photo-02.jpg", alt: "Dreams. Introspection. Moving Images. workshop session, Lucban 2026", aspect: "landscape" },
+      { type: "image", src: "/images/projects/dreams-introspection-moving/photo-03.jpg", alt: "Dreams. Introspection. Moving Images. workshop session, Lucban 2026", aspect: "landscape" },
+      { type: "image", src: "/images/projects/dreams-introspection-moving/photo-04.jpg", alt: "Dreams. Introspection. Moving Images. workshop, Lucban 2026", aspect: "portrait" },
+      { type: "image", src: "/images/projects/dreams-introspection-moving/photo-05.jpg", alt: "Dreams. Introspection. Moving Images. workshop, Lucban 2026", aspect: "portrait" },
+      { type: "image", src: "/images/projects/dreams-introspection-moving/photo-06.jpg", alt: "Dreams. Introspection. Moving Images. field visit, Lucban 2026", aspect: "portrait" },
       { type: "video", src: "/images/projects/dreams-introspection-moving/video-01.mp4", alt: "Dreams. Introspection. Moving Images. workshop footage, Lucban 2026", aspect: "landscape" },
       { type: "video", src: "/images/projects/dreams-introspection-moving/video-02.mp4", alt: "Dreams. Introspection. Moving Images. workshop footage, Lucban 2026", aspect: "landscape" },
     ],

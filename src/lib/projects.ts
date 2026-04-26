@@ -219,12 +219,18 @@ export const projects: Project[] = [
     gradientFrom: "#2e1a1a",
     gradientTo: "#1a0a0a",
     gradientAngle: 180,
-    heroImage: "/images/projects/dreams-introspection-moving/workshop-wall.jpg",
-    images: [
-      { src: "/images/projects/dreams-introspection-moving/workshop-wall.jpg", alt: "Dreams. Introspection. Moving Images. workshop at Project Space Pilipinas, Lucban", aspect: "landscape" },
-    ],
+    heroImage: "/images/projects/dreams-introspection-moving/poster.jpg",
+    heroVideo: "/images/projects/dreams-introspection-moving/video-01.mp4",
     media: [
-      { type: "image", src: "/images/projects/dreams-introspection-moving/workshop-wall.jpg", alt: "Dreams. Introspection. Moving Images. workshop at Project Space Pilipinas, Lucban", aspect: "landscape" },
+      { src: "/images/projects/dreams-introspection-moving/poster.jpg", alt: "Dreams. Introspection. Moving Images. — workshop poster, Project Space Pilipinas, Lucban 2026", aspect: "landscape" },
+      { src: "/images/projects/dreams-introspection-moving/photo-01.jpg", alt: "Dreams. Introspection. Moving Images. workshop participants, Lucban 2026", aspect: "portrait" },
+      { src: "/images/projects/dreams-introspection-moving/photo-02.jpg", alt: "Dreams. Introspection. Moving Images. workshop session, Lucban 2026", aspect: "landscape" },
+      { src: "/images/projects/dreams-introspection-moving/photo-03.jpg", alt: "Dreams. Introspection. Moving Images. workshop session, Lucban 2026", aspect: "landscape" },
+      { src: "/images/projects/dreams-introspection-moving/photo-04.jpg", alt: "Dreams. Introspection. Moving Images. workshop, Lucban 2026", aspect: "portrait" },
+      { src: "/images/projects/dreams-introspection-moving/photo-05.jpg", alt: "Dreams. Introspection. Moving Images. workshop, Lucban 2026", aspect: "portrait" },
+      { src: "/images/projects/dreams-introspection-moving/photo-06.jpg", alt: "Dreams. Introspection. Moving Images. field visit, Lucban 2026", aspect: "portrait" },
+      { type: "video", src: "/images/projects/dreams-introspection-moving/video-01.mp4", alt: "Dreams. Introspection. Moving Images. workshop footage, Lucban 2026", aspect: "landscape" },
+      { type: "video", src: "/images/projects/dreams-introspection-moving/video-02.mp4", alt: "Dreams. Introspection. Moving Images. workshop footage, Lucban 2026", aspect: "landscape" },
     ],
   },
 ];

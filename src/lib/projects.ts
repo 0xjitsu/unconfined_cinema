@@ -200,7 +200,7 @@ export const projects: Project[] = [
     slug: "dreams-introspection-moving",
     title: "The Unconfined Cinema #7: Dreams. Introspection. Moving Images.",
     subtitle: "Dreams. Introspection. Moving Images.",
-    year: 2024,
+    year: 2026,
     venue: "Project Space Pilipinas, Lucban City, Quezon",
     medium: "Film workshop",
     format: ["Workshop"],
